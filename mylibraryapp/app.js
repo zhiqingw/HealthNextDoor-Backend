@@ -20,7 +20,7 @@ const authorRouter = require("./routes/authorRouter");
 
 // the author routes are added onto the end of '/author-management'
 app.use("/discussionForum", authorRouter);
-
+app.use("/findPatient", authorRouter);
 // start app and listen for incoming requests on port 3000
 app.listen(3000, () => {
   console.log("The library app is listening on port 3000!");
