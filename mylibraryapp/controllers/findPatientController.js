@@ -34,7 +34,7 @@ const addPatient = (req, res) => {
 
 // function to modify author by ID
 const updatePatient = (req, res) => {
-    const new_discussionForum = req.body;
+    const new_patient = req.body;
 
     // search for author in the database via ID
     const findPatient = findPatients.find(findPatient => findPatient.id === req.params.id);
@@ -45,7 +45,7 @@ const updatePatient = (req, res) => {
 
     // now merge new_author into the original author object
     // it is assumed that user input is well-formed (a dangerous assumption)
-    Object.assign(findPatient, new_discussionForum);
+    Object.assign(findPatient, new_patient);
 
     // return updated author
     res.send(findPatient);
