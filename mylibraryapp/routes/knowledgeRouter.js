@@ -1,29 +1,29 @@
 const express = require("express");
 
 // create router
-const discussionForumRouter = express.Router();
+const knowledgeRouter = express.Router();
 
 // load/import the author controller
-const discussionForumController = require("../controllers/discussionForumController.js");
+const knowledgeController = require("../controllers/knowledgeController.js");
 
 // handle the GET request on root of the author-management path
 // i.e. get all authors
-discussionForumRouter.get("/", discussionForumController.getAllPost);
+knowledgeRouter.get("/", knowledgeController.getAllKnowledge);
 
 // handle the GET request to get an author by ID
 // note that :id refers to a param, accessed by req.params.id in controller fn
-discussionForumRouter.get("/:id", discussionForumController.getPostByID);
+knowledgeRouter.get("/:id", knowledgeController.getKnowledgeByID);
 
 // handle the POST request to add an author
-discussionForumRouter.post("/", discussionForumController.addPost);
+knowledgeRouter.post("/", knowledgeController.addKnowledge);
 
 // handle the POST request to update an author
 // note that the PATCH method may be more appropriate
-discussionForumRouter.post("/:id", discussionForumController.updatePost);
+knowledgeRouter.post("/:id", knowledgeController.updateKnowledge);
 
 
 //handle the DELETE request to delete a forum
 //discussionForumRouter.delete("/:id", discussionForuController.deleteForum);
 
 // export the router
-module.exports = discussionForumRouter;
+module.exports = knowledgeRouter;

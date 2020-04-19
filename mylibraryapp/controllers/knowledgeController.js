@@ -1,20 +1,20 @@
 // import the author model
 // i.e. provide the controller a link to the author model
-var discussionForums = require("../models/discussionForum");
+var knowledges = require("../models/knowledge");
 
 // function to handle a request to get all authors
-const getAllPost = (req, res) => {
-    res.send(discussionForums); // return the list of authors
+const getAllKnowledge = (req, res) => {
+    res.send(knowledges); // return the list of authors
 };
 
 // function to handle a request to a particular author
-const getPostByID = (req, res) => {
+const getKnowledgeByID = (req, res) => {
     // search for author in the database via ID
-    const discussionForum = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
+    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
 
-    if (discussionForum) {
+    if (knowledge) {
         // send back the author details
-        res.send(discussionForum);
+        res.send(knowledge);
     } else {
         // you can decide what to return if author is not found
         // currently, an empty list will be returned
@@ -23,38 +23,38 @@ const getPostByID = (req, res) => {
 };
 
 // function to handle request to add author
-const addPost = (req, res) => {
+const addKnowledge = (req, res) => {
     // extract info. from body
-    const post = req.body;
+    const knowledge = req.body;
 
     // add author to array
-    discussionForums.push(post);
-    res.send(discussionForums);
+    knowledges.push(knowledge);
+    res.send(knowledges);
 };
 
 // function to modify author by ID
-const updatePost = (req, res) => {
-    const new_post = req.body;
+const updateKnowledge = (req, res) => {
+    const new_knowledge = req.body;
 
     // search for author in the database via ID
-    const post = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
-    if (!post) {
+    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
+    if (!knowledge) {
         // cannot be found
         return res.send([]);
     }
 
     // now merge new_author into the original author object
     // it is assumed that user input is well-formed (a dangerous assumption)
-    Object.assign(post, new_post);
+    Object.assign(knowledge, new_knowledge);
 
     // return updated author
-    res.send(post);
+    res.send(knowledge);
 };
 
 // remember to export the functions
 module.exports = {
-    getAllPost,
-    getPostByID,
-    addPost,
-    updatePost
+    getAllKnowledge,
+    getKnowledgeByID,
+    addKnowledge,
+    updateKnowledge
 };

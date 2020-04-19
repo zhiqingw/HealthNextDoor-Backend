@@ -17,10 +17,13 @@ app.get("/", (req, res) => {
 // handle author-management related requests
 // first import the author router
 const authorRouter = require("./routes/authorRouter");
-
+const discussionForumRouter = require("./routes/discussionForumRouter");
+const findPatientRouter = require("./routes/findPatientRouter");
+const knowledgeRouter = require("./routes/knowledgeRouter");
 // the author routes are added onto the end of '/author-management'
-app.use("/discussionForum", authorRouter);
-app.use("/findPatient", authorRouter);
+app.use("/discussionForum", discussionForumRouter);
+app.use("/findPatient", findPatientRouter);
+app.use("/knowledge", knowledgeRouter);
 // start app and listen for incoming requests on port 3000
 app.listen(3000, () => {
   console.log("The library app is listening on port 3000!");
