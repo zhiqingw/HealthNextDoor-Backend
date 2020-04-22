@@ -2,13 +2,11 @@
 const knowledge = [
     {
         id: "10001",
-        first_name: "Jennifer",
-        last_name: "Robbins"
+        content: " "
     },
     {
         id: "10002",
-        first_name: "Evan",
-        last_name: "Hahn"
+        content: " "
     }
 ];
 

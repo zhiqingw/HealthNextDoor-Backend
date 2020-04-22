@@ -16,7 +16,6 @@ app.get("/", (req, res) => {
 
 // handle author-management related requests
 // first import the author router
-const authorRouter = require("./routes/authorRouter");
 const discussionForumRouter = require("./routes/discussionForumRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
