@@ -18,12 +18,14 @@ app.get("/", (req, res) => {
 // first import the author router
 const discussionForumRouter = require("./routes/discussionForumRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
+const findVolunteerRouter = require("./routes/findVolunteerRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
 // the author routes are added onto the end of '/author-management'
 app.use("/discussionForum", discussionForumRouter);
 app.use("/findPatient", findPatientRouter);
+app.use("/findVolunteer", findVolunteerRouter);
 app.use("/knowledge", knowledgeRouter);
 // start app and listen for incoming requests on port 3000
-app.listen(process.env.PORT || 3000, () => {
-  console.log("The library app is running!");
+app.listen(3000, () => {
+  console.log("The library app is listening on port 3000!");
 });
