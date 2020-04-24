@@ -17,11 +17,13 @@ app.get("/", (req, res) => {
 // handle author-management related requests
 // first import the author router
 const discussionForumRouter = require("./routes/discussionForumRouter");
+const findNurseRouter = require("./routes/findNurseRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
 const findVolunteerRouter = require("./routes/findVolunteerRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
 // the author routes are added onto the end of '/author-management'
 app.use("/discussionForum", discussionForumRouter);
+app.use("/findNurse", findNurseRouter);
 app.use("/findPatient", findPatientRouter);
 app.use("/findVolunteer", findVolunteerRouter);
 app.use("/knowledge", knowledgeRouter);
