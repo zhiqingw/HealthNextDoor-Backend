@@ -1,0 +1,17 @@
+For the function discussionForum, Post could be print, added, update and search in here.
+This could be achieve by accessing the url: http://localhost:3000/discussionForum/
+
+For the function findNurse, user that register as nurse could be post information of themselves there, and for the
+user register as patient, they can find a nurse at that page
+This could be achieve by accessing the url: http://localhost:3000/findNurse/
+
+For the function findPatient, user that register as patient could be post information of themselves there, and for the
+user register as nurse and volunteer, they can find a patient at that page
+This could be achieve by accessing the url: http://localhost:3000/findPatient/
+
+For the function findVolunteer, user that register as volunteer could be post information of themselves there, and for
+the user register as patient, they can find a volunteer at that page
+This could be achieve by accessing the url: http://localhost:3000/findPatient/
+
+For the function of Knowledge, there will be some video, paper or tutorial session will be posting there
+This could be achieve by accessing the url: http://localhost:3000/findPatient/
