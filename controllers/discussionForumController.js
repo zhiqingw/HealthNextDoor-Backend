@@ -1,60 +1,64 @@
-// import the author model
-// i.e. provide the controller a link to the author model
+// import the discussionForum model
+// i.e. provide the controller a link to the discussionForum model
 var discussionForums = require("../models/discussionForum");
 
-// function to handle a request to get all authors
+// function to handle a request to get all post
 const getAllPost = (req, res) => {
-    res.send(discussionForums); // return the list of authors
+    res.send(discussionForums); // return the list of post
 };
 
-// function to handle a request to a particular author
+// function to handle a request to a particular post
 const getPostByID = (req, res) => {
-    // search for author in the database via ID
+    // search for post in the database via ID
     const discussionForum = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
 
     if (discussionForum) {
-        // send back the author details
+        // send back the post details
         res.send(discussionForum);
     } else {
-        // you can decide what to return if author is not found
-        // currently, an empty list will be returned
-        res.send([]);
+       res.send([]);
     }
 };
 
-// function to handle request to add author
+// function to handle request to add post
 const addPost = (req, res) => {
     // extract info. from body
     const post = req.body;
 
-    // add author to array
+    // add post to array
     discussionForums.push(post);
     res.send(discussionForums);
 };
 
-// function to modify author by ID
+// function to modify post by ID
 const updatePost = (req, res) => {
     const new_post = req.body;
 
-    // search for author in the database via ID
+    // search for post in the database via ID
     const post = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
     if (!post) {
         // cannot be found
         return res.send([]);
     }
 
-    // now merge new_author into the original author object
-    // it is assumed that user input is well-formed (a dangerous assumption)
+    // now merge new_post into the original post object
+    // it is assumed that user input is well-formed
     Object.assign(post, new_post);
 
-    // return updated author
+    // return updated post
     res.send(post);
 };
 
-// remember to export the functions
+const deletePost = (req, res) => {
+    // delete post in the database via ID
+    const post = discussionForums.filter(discussionForum => discussionForum.id !== req.params.id);
+    res.send(post);
+};
+
 module.exports = {
     getAllPost,
     getPostByID,
     addPost,
-    updatePost
+    updatePost,
+    deletePost
 };
