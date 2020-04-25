@@ -8,18 +8,18 @@ const findNurseController = require("../controllers/findNurseController.js");
 
 // handle the GET request on root of the author-management path
 // i.e. get all authors
-findNurseRouter.get("/", findNurseController.getAllVolunteer);
+findNurseRouter.get("/", findNurseController.getAllNurse);
 
 // handle the GET request to get an author by ID
 // note that :id refers to a param, accessed by req.params.id in controller fn
-findNurseRouter.get("/:id", findNurseController.getVolunteerByID);
+findNurseRouter.get("/:id", findNurseController.getNurseByID);
 
 // handle the POST request to add an author
-findNurseRouter.post("/", findNurseController.addVolunteer);
+findNurseRouter.post("/", findNurseController.addNurse);
 
 // handle the POST request to update an author
 // note that the PATCH method may be more appropriate
-findNurseRouter.post("/:id", findNurseController.updateVolunteer);
+findNurseRouter.post("/:id", findNurseController.updateNurse);
 
 
 //handle the DELETE request to delete a forum

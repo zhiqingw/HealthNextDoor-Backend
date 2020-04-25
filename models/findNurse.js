@@ -1,5 +1,5 @@
 // Some static data, an array of objects representing each author
-const findPatients = [
+const findNurses = [
     {
         id: "10001",
         first_name: "Jennifer",
@@ -12,4 +12,4 @@ const findPatients = [
     }
 ];
 
-module.exports = findPatients;
+module.exports = findNurses;
