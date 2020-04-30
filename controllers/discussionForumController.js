@@ -51,8 +51,10 @@ const updatePost = (req, res) => {
 
 const deletePost = (req, res) => {
     // delete post in the database via ID
-    const post = discussionForums.filter(discussionForum => discussionForum.id !== req.params.id);
-    res.send(post);
+    const post = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
+    const index = discussionForums.indexOf(post);
+    discussionForums.splice(index, 1);
+    res.send(discussionForums);
 };
 
 module.exports = {

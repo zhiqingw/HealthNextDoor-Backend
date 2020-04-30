@@ -49,10 +49,19 @@ const updateKnowledge = (req, res) => {
     res.send(knowledge);
 };
 
+const deleteKnowledge = (req, res) => {
+    // delete knowledge in the database via ID
+    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
+    const index = knowledges.indexOf(knowledge);
+    knowledges.splice(index, 1);
+    res.send(knowledges);
+};
+
 // remember to export the functions
 module.exports = {
     getAllKnowledge,
     getKnowledgeByID,
     addKnowledge,
-    updateKnowledge
+    updateKnowledge,
+    deleteKnowledge
 };

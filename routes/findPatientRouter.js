@@ -20,5 +20,8 @@ findPatientRouter.post("/", findPatientController.addPatient);
 // handle the POST request to update a Patient
 findPatientRouter.post("/:id", findPatientController.updatePatient);
 
+//handle the DELETE request to delete a patient
+findPatientRouter.delete("/:id", findPatientController.deletePatient);
+
 // export the router
 module.exports = findPatientRouter;

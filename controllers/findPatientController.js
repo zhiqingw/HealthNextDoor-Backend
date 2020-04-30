@@ -47,9 +47,17 @@ const updatePatient = (req, res) => {
     res.send(findPatient);
 };
 
+const deletePatient = (req, res) => {
+    // delete patient in the database via ID
+    const parient = findPatients.find(findPatient => findPatient.id === req.params.id);
+    const index = findPatients.indexOf(parient);
+    findPatients.splice(index, 1);
+    res.send(findPatients);
+};
 module.exports = {
     getAllPatient,
     getPatientByID,
     addPatient,
-    updatePatient
+    updatePatient,
+    deletePatient
 };

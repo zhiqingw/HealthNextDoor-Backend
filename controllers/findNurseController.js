@@ -47,10 +47,19 @@ const updateNurse = (req, res) => {
     res.send(findNurse);
 };
 
+const deleteNurse = (req, res) => {
+    // delete nurse in the database via ID
+    const nurse = findNurses.find(findNurse => findNurses.id === req.params.id);
+    const index = findNurses.indexOf(nurse);
+    findNurses.splice(index, 1);
+    res.send(findNurses);
+};
+
 // remember to export the functions
 module.exports = {
     getAllNurse,
     getNurseByID,
     addNurse,
-    updateNurse
+    updateNurse,
+    deleteNurse
 };

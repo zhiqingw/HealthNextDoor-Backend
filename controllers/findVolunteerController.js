@@ -49,10 +49,19 @@ const updateVolunteer = (req, res) => {
     res.send(findVolunteer);
 };
 
+const deleteVolunteer = (req, res) => {
+    // delete volunteer in the database via ID
+    const volunteer = findVolunteers.find(findVolunteer => findVolunteer.id === req.params.id);
+    const index = findVolunteers.indexOf(volunteer);
+    findVolunteers.splice(index, 1);
+    res.send(findVolunteers);
+};
+
 // remember to export the functions
 module.exports = {
     getAllVolunteer,
     getVolunteerByID,
     addVolunteer,
-    updateVolunteer
+    updateVolunteer,
+    deleteVolunteer
 };

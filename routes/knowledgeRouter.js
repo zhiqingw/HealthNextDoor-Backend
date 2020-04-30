@@ -19,5 +19,8 @@ knowledgeRouter.post("/", knowledgeController.addKnowledge);
 // handle the POST request to update a Knowledge
 knowledgeRouter.post("/:id", knowledgeController.updateKnowledge);
 
+//handle the DELETE request to delete a volunteer
+knowledgeRouter.delete("/:id", knowledgeController.deleteKnowledge);
+
 // export the router
 module.exports = knowledgeRouter;

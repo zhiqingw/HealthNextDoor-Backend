@@ -19,5 +19,8 @@ findVolunteerRouter.post("/", findVolunteerController.addVolunteer);
 // handle the POST request to update a Volunteer
 findVolunteerRouter.post("/:id", findVolunteerController.updateVolunteer);
 
+//handle the DELETE request to delete a volunteer
+findVolunteerRouter.delete("/:id", findVolunteerController.deleteVolunteer);
+
 // export the router
 module.exports = findVolunteerRouter;

@@ -35,8 +35,8 @@ findNurseRouter.post("/", findNurseController.addNurse);
 findNurseRouter.post("/:id", findNurseController.updateNurse);
 
 
-//handle the DELETE request to delete a forum
-//discussionForumRouter.delete("/:id", discussionForuController.deleteForum);
+//handle the DELETE request to delete a post
+findNurseRouter.delete("/:id", findNurseController.deleteNurse);
 
 // export the router
 module.exports = findNurseRouter;
