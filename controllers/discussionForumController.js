@@ -8,9 +8,9 @@ const getAllPost = (req, res) => {
 };
 
 // function to handle a request to a particular post
-const getPostByID = (req, res) => {
-    // search for post in the database via ID
-    const discussionForum = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
+const getPostByName = (req, res) => {
+    // search for post in the database via Name
+    const discussionForum = discussionForums.find(discussionForum => discussionForum.name === req.params.name);
 
     if (discussionForum) {
         // send back the post details
@@ -30,12 +30,12 @@ const addPost = (req, res) => {
     res.send(discussionForums);
 };
 
-// function to modify post by ID
+// function to modify post by Name
 const updatePost = (req, res) => {
     const new_post = req.body;
 
-    // search for post in the database via ID
-    const post = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
+    // search for post in the database via Name
+    const post = discussionForums.find(discussionForum => discussionForum.name === req.params.name);
     if (!post) {
         // cannot be found
         return res.send([]);
@@ -50,8 +50,8 @@ const updatePost = (req, res) => {
 };
 
 const deletePost = (req, res) => {
-    // delete post in the database via ID
-    const post = discussionForums.find(discussionForum => discussionForum.id === req.params.id);
+    // delete post in the database via Name
+    const post = discussionForums.find(discussionForum => discussionForum.name === req.params.name);
     const index = discussionForums.indexOf(post);
     discussionForums.splice(index, 1);
     res.send(discussionForums);
@@ -59,7 +59,7 @@ const deletePost = (req, res) => {
 
 module.exports = {
     getAllPost,
-    getPostByID,
+    getPostByName,
     addPost,
     updatePost,
     deletePost

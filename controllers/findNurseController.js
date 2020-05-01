@@ -8,9 +8,9 @@ const getAllNurse = (req, res) => {
 };
 
 // function to handle a request to a particular Nurse
-const getNurseByID = (req, res) => {
-    // search for Nurse in the database via ID
-    const findNurse = findNurses.find(findNurse => findNurse.id === req.params.id);
+const getNurseByName = (req, res) => {
+    // search for Nurse in the database via Name
+    const findNurse = findNurses.find(findNurse => findNurse.name === req.params.name);
 
     if (findNurse) {
         // send back the Nurse details
@@ -58,7 +58,7 @@ const deleteNurse = (req, res) => {
 // remember to export the functions
 module.exports = {
     getAllNurse,
-    getNurseByID,
+    getNurseByName,
     addNurse,
     updateNurse,
     deleteNurse

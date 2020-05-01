@@ -8,9 +8,9 @@ const getAllVolunteer = (req, res) => {
 };
 
 // function to handle a request to a particular Volunteer
-const getVolunteerByID = (req, res) => {
-    // search for Volunteer in the database via ID
-    const findVolunteer = findVolunteers.find(findVolunteer => findVolunteer.id === req.params.id);
+const getVolunteerByName = (req, res) => {
+    // search for Volunteer in the database via Name
+    const findVolunteer = findVolunteers.find(findVolunteer => findVolunteer.name === req.params.name);
 
     if (findVolunteer) {
         // send back the Volunteer details
@@ -50,7 +50,7 @@ const updateVolunteer = (req, res) => {
 };
 
 const deleteVolunteer = (req, res) => {
-    // delete volunteer in the database via ID
+    // delete volunteer in the database via ID which will be easier than via name
     const volunteer = findVolunteers.find(findVolunteer => findVolunteer.id === req.params.id);
     const index = findVolunteers.indexOf(volunteer);
     findVolunteers.splice(index, 1);
@@ -60,7 +60,7 @@ const deleteVolunteer = (req, res) => {
 // remember to export the functions
 module.exports = {
     getAllVolunteer,
-    getVolunteerByID,
+    getVolunteerByName,
     addVolunteer,
     updateVolunteer,
     deleteVolunteer

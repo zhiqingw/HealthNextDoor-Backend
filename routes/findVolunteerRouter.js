@@ -10,8 +10,8 @@ const findVolunteerController = require("../controllers/findVolunteerController.
 // i.e. get all Volunteer
 findVolunteerRouter.get("/", findVolunteerController.getAllVolunteer);
 
-// handle the GET request to get a Volunteer by ID
-findVolunteerRouter.get("/:id", findVolunteerController.getVolunteerByID);
+// handle the GET request to get a Volunteer by Name
+findVolunteerRouter.get("/:name", findVolunteerController.getVolunteerByName);
 
 // handle the POST request to add a Volunteer
 findVolunteerRouter.post("/", findVolunteerController.addVolunteer);

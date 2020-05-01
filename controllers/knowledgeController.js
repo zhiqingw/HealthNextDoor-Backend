@@ -8,9 +8,9 @@ const getAllKnowledge = (req, res) => {
 };
 
 // function to handle a request to a particular Knowledge
-const getKnowledgeByID = (req, res) => {
-    // search for Knowledge in the database via ID
-    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
+const getKnowledgeByName = (req, res) => {
+    // search for Knowledge in the database via Name
+    const knowledge = knowledges.find(knowledge => knowledge.name === req.params.name);
 
     if (knowledge) {
         // send back the Knowledge details
@@ -30,12 +30,12 @@ const addKnowledge = (req, res) => {
     res.send(knowledges);
 };
 
-// function to modify Knowledge by ID
+// function to modify Knowledge by Name
 const updateKnowledge = (req, res) => {
     const new_knowledge = req.body;
 
-    // search for Knowledge in the database via ID
-    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
+    // search for Knowledge in the database via Name
+    const knowledge = knowledges.find(knowledge => knowledge.name === req.params.name);
     if (!knowledge) {
         // cannot be found
         return res.send([]);
@@ -50,8 +50,8 @@ const updateKnowledge = (req, res) => {
 };
 
 const deleteKnowledge = (req, res) => {
-    // delete knowledge in the database via ID
-    const knowledge = knowledges.find(knowledge => knowledge.id === req.params.id);
+    // delete knowledge in the database via Name
+    const knowledge = knowledges.find(knowledge => knowledge.name === req.params.name);
     const index = knowledges.indexOf(knowledge);
     knowledges.splice(index, 1);
     res.send(knowledges);
@@ -60,7 +60,7 @@ const deleteKnowledge = (req, res) => {
 // remember to export the functions
 module.exports = {
     getAllKnowledge,
-    getKnowledgeByID,
+    getKnowledgeByName,
     addKnowledge,
     updateKnowledge,
     deleteKnowledge

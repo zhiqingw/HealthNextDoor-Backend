@@ -8,9 +8,9 @@ const getAllPatient = (req, res) => {
 };
 
 // function to handle a request to a particular Patient
-const getPatientByID = (req, res) => {
-    // search for Patient in the database via ID
-    const findPatient = findPatients.find(findPatient => findPatient.id === req.params.id);
+const getPatientByName = (req, res) => {
+    // search for Patient in the database via Name
+    const findPatient = findPatients.find(findPatient => findPatient.name === req.params.name);
 
     if (findPatient) {
         // send back the Patient details
@@ -56,7 +56,7 @@ const deletePatient = (req, res) => {
 };
 module.exports = {
     getAllPatient,
-    getPatientByID,
+    getPatientByName,
     addPatient,
     updatePatient,
     deletePatient

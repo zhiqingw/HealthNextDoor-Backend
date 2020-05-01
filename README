@@ -1,17 +1,35 @@
-For the function discussionForum, Post could be print, added, update and search in here.
-This could be achieve by accessing the url: http://localhost:3000/discussionForum/
+For the function discussionForum, we want to build a community to allow it possible for the families helping each other,
+and we believe that this function will help family caregivers to relieve stress, get confidence and feel warmth.
+We allow our users to use the functionality "addPost" to post their questions,
+share their experiences with other users, and use "updatePost" to edit the original post.
+If our users want to search a specific post, they can use the functionality called "getPostByName", and if they want to
+get to the root of the discussion form and see all of the posts, they can use "getAllPost" as well.
+Also, the users would be able to delete their posts as well by using "deletePost".
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/discussionForum/
 
-For the function findNurse, user that register as nurse could be post information of themselves there, and for the
-user register as patient, they can find a nurse at that page
-This could be achieve by accessing the url: http://localhost:3000/findNurse/
+For the function findNurse, we wish that patient families could use it to hire a part-time professional nurse.
+The nurse who want a part-time job could post their interests and personal information use "addNurse" functionality,
+and use "updateNurse" to edit any updates.
+Then patient families can use "getAllNurse" to see all of the nurses' information to choose who they want, and if they
+want to find the specific one they can use "getNurseByName" functionality.
+When nurses once find the employers or don't want to get job anymore, they can delete themselves using "deleteNurse".
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findNurse/
 
-For the function findPatient, user that register as patient could be post information of themselves there, and for the
-user register as nurse and volunteer, they can find a patient at that page
-This could be achieve by accessing the url: http://localhost:3000/findPatient/
+For the function findPatient and function findVolunteer, we know that there are many families that are not able to
+afford the cost of caring for dementia patients, and we also believe in that there are also many volunteers willing to
+help those families, so we would like to build a bridge to connect those two types of people.
+Our users can register themselves as patient or volunteer by using "addPatient" or "addVolunteer",
+and update by the corresponding update methods.
+Then they can look through all of the volunteers' or patients' information by using "getAllVolunteer" or
+"get AllPatient", or get the specific one using "getVolunteerByName" or "getPatientByName".
+Once they have no need for volunteers or don't want to be a volunteer anymore, they can use "deletePatient"
+or "deleteVolunteer" to remove their information.
+These could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findPatient/,
+or https://healthnextdoor.herokuapp.com/findVolunteer/
 
-For the function findVolunteer, user that register as volunteer could be post information of themselves there, and for
-the user register as patient, they can find a volunteer at that page
-This could be achieve by accessing the url: http://localhost:3000/findPatient/
-
-For the function of Knowledge, there will be some video, paper or tutorial session will be posting there
-This could be achieve by accessing the url: http://localhost:3000/findPatient/
+For the function of Knowledge, we design this function to provide some knowledge for our users to give them
+deeper insight about Dementia and teach them some caring skills, which can be different forms,
+like video, paper, tutorial session, questionnaire, etc.
+These can be post by using "addKnowledge", update by using "updateKnowledge", and delete by using "deleteKnowledge".
+Our users can use "getAllKnowledge" to see all of resources, and use "getKnowledgeByName" to search what they want.
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/Knowledge/

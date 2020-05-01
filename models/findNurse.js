@@ -1,14 +1,14 @@
 // Some static data, an array of objects representing each author
 const findNurses = [
     {
+        name: "Jennifer Robbins",
         id: "10001",
-        first_name: "Jennifer",
-        last_name: "Robbins"
+        gender: "female"
     },
     {
+        name: "Evan Hahn",
         id: "10002",
-        first_name: "Evan",
-        last_name: "Hahn"
+        gender: "female"
     }
 ];
 

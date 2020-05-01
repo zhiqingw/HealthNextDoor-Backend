@@ -1,11 +1,11 @@
 // Some static data, an array of objects representing each author
 const knowledge = [
     {
-        id: "10001",
+        name: "Alzheimer's Disease Questionnaire",
         content: " "
     },
     {
-        id: "10002",
+        name: "Dementia Basic Knowledge Questionnaire",
         content: " "
     }
 ];

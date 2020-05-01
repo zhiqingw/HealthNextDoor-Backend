@@ -10,9 +10,9 @@ const findPatientController = require("../controllers/findPatientController.js")
 // i.e. get all Patient
 findPatientRouter.get("/", findPatientController.getAllPatient);
 
-// handle the GET request to get a Patient by ID
-// note that :id refers to a param, accessed by req.params.id in controller fn
-findPatientRouter.get("/:id", findPatientController.getPatientByID);
+// handle the GET request to get a Patient by Name
+// note that :name refers to a param, accessed by req.params.name in controller fn
+findPatientRouter.get("/:name", findPatientController.getPatientByName);
 
 // handle the POST request to add a Patient
 findPatientRouter.post("/", findPatientController.addPatient);
