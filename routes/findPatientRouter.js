@@ -14,6 +14,9 @@ findPatientRouter.get("/", findPatientController.getAllPatient);
 // note that :name refers to a param, accessed by req.params.name in controller fn
 findPatientRouter.get("/:name", findPatientController.getPatientByName);
 
+// handle the GET request to get a Patient by ID
+findPatientRouter.get("/:id", findPatientController.getPatientByID);
+
 // handle the POST request to add a Patient
 findPatientRouter.post("/", findPatientController.addPatient);
 

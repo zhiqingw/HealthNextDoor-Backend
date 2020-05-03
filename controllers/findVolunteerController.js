@@ -13,6 +13,18 @@ const getVolunteerByName = (req, res) => {
     const findVolunteer = findVolunteers.find(findVolunteer => findVolunteer.name === req.params.name);
 
     if (findVolunteer) {
+        // send back the overview of the Volunteer
+        res.send(findVolunteer.name + ": " + findVolunteer.introduction);
+    } else {
+        res.send("Not Found");
+    }
+};
+
+const getVolunteerByID = (req, res) => {
+    // search for Volunteer in the database via ID
+    const findVolunteer = findVolunteers.find(findVolunteer => findVolunteer.id === req.params.id);
+
+    if (findVolunteer) {
         // send back the Volunteer details
         res.send(findVolunteer);
     } else {
@@ -61,6 +73,7 @@ const deleteVolunteer = (req, res) => {
 module.exports = {
     getAllVolunteer,
     getVolunteerByName,
+    getVolunteerByID,
     addVolunteer,
     updateVolunteer,
     deleteVolunteer

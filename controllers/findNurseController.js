@@ -13,6 +13,18 @@ const getNurseByName = (req, res) => {
     const findNurse = findNurses.find(findNurse => findNurse.name === req.params.name);
 
     if (findNurse) {
+        // send back the overview of the Nurse
+        res.send(findNurse.name + ": " + findNurse.introduction);
+    } else {
+        res.send("Not Found");
+    }
+};
+
+const getNurseByID = (req, res) => {
+    // search for Nurse in the database via ID
+    const findNurse = findNurses.find(findNurse => findNurse.id === req.params.id);
+
+    if (findNurse) {
         // send back the Nurse details
         res.send(findNurse);
     } else {
@@ -59,6 +71,7 @@ const deleteNurse = (req, res) => {
 module.exports = {
     getAllNurse,
     getNurseByName,
+    getNurseByID,
     addNurse,
     updateNurse,
     deleteNurse

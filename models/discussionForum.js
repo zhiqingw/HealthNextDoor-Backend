@@ -1,11 +1,11 @@
 // Some static data, an array of objects representing each author
 const discussionForums = [
     {
-        name: "My experiences about Dementia",
+        name: "My_experiences_about_Dementia",
         content: " "
     },
     {
-        name: "How to look after my father",
+        name: "How_to_look_after_my_father",
         content: " "
     }
 ];

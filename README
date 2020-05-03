@@ -11,7 +11,7 @@ For the function findNurse, we wish that patient families could use it to hire a
 The nurse who want a part-time job could post their interests and personal information use "addNurse" functionality,
 and use "updateNurse" to edit any updates.
 Then patient families can use "getAllNurse" to see all of the nurses' information to choose who they want, and if they
-want to find the specific one they can use "getNurseByName" functionality.
+want to find the specific one they can use "getNurseByID" functionality.
 When nurses once find the employers or don't want to get job anymore, they can delete themselves using "deleteNurse".
 This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findNurse/
 
@@ -21,11 +21,17 @@ help those families, so we would like to build a bridge to connect those two typ
 Our users can register themselves as patient or volunteer by using "addPatient" or "addVolunteer",
 and update by the corresponding update methods.
 Then they can look through all of the volunteers' or patients' information by using "getAllVolunteer" or
-"get AllPatient", or get the specific one using "getVolunteerByName" or "getPatientByName".
+"get AllPatient", or get the specific one using "getVolunteerByID" or "getPatientByID".
 Once they have no need for volunteers or don't want to be a volunteer anymore, they can use "deletePatient"
 or "deleteVolunteer" to remove their information.
 These could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findPatient/,
 or https://healthnextdoor.herokuapp.com/findVolunteer/
+
+Also, for the above three function, we also keep a functionality called "getXXXByName", we would like to use this
+function to return a list of people with the same/similar names with their self-introduction, and when you click
+the specific one, you will get to the getXXXByID route to see all the information about him/her. However, we haven't
+handled the duplicated name issue, you can just use getXXXByID to search the user right now.
+For example, try the url:
 
 For the function of Knowledge, we design this function to provide some knowledge for our users to give them
 deeper insight about Dementia and teach them some caring skills, which can be different forms,
