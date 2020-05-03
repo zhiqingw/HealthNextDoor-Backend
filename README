@@ -33,7 +33,8 @@ the specific one, you will get to the getXXXByID route to see all the informatio
 handled the duplicated name issue, you can just use getXXXByID to search the user right now.
 For example, try the url: https://healthnextdoor.herokuapp.com/findNurse/Jennifer_Robbins, to test the getNurseByName,
 it will return the overview information of Jennifer Robbins;
-and try
+and try the url: https://healthnextdoor.herokuapp.com/findNurse/Jennifer_Robbins/10001, to test the getNurseByID,
+it will return all of the information about Jennifer Robbins.
 
 For the function of Knowledge, we design this function to provide some knowledge for our users to give them
 deeper insight about Dementia and teach them some caring skills, which can be different forms,
