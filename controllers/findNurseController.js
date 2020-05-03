@@ -61,7 +61,7 @@ const updateNurse = (req, res) => {
 
 const deleteNurse = (req, res) => {
     // delete nurse in the database via ID
-    const nurse = findNurses.find(findNurse => findNurses.id === req.params.id);
+    const nurse = findNurses.find(findNurse => findNurse.id === req.params.id);
     const index = findNurses.indexOf(nurse);
     findNurses.splice(index, 1);
     res.send(findNurses);
