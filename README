@@ -31,7 +31,9 @@ Also, for the above three function, we also keep a functionality called "getXXXB
 function to return a list of people with the same/similar names with their self-introduction, and when you click
 the specific one, you will get to the getXXXByID route to see all the information about him/her. However, we haven't
 handled the duplicated name issue, you can just use getXXXByID to search the user right now.
-For example, try the url:
+For example, try the url: https://healthnextdoor.herokuapp.com/findNurse/Jennifer_Robbins, to test the getNurseByName,
+it will return the overview information of Jennifer Robbins;
+and try
 
 For the function of Knowledge, we design this function to provide some knowledge for our users to give them
 deeper insight about Dementia and teach them some caring skills, which can be different forms,

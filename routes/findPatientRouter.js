@@ -15,7 +15,7 @@ findPatientRouter.get("/", findPatientController.getAllPatient);
 findPatientRouter.get("/:name", findPatientController.getPatientByName);
 
 // handle the GET request to get a Patient by ID
-findPatientRouter.get("/:id", findPatientController.getPatientByID);
+findPatientRouter.get("/:name/:id", findPatientController.getPatientByID);
 
 // handle the POST request to add a Patient
 findPatientRouter.post("/", findPatientController.addPatient);

@@ -14,7 +14,7 @@ findNurseRouter.get("/", findNurseController.getAllNurse);
 findNurseRouter.get("/:name", findNurseController.getNurseByName);
 
 // handle the GET request to get a Nurse by ID
-findNurseRouter.get("/:id", findNurseController.getNurseByID);
+findNurseRouter.get("/:name/:id", findNurseController.getNurseByID);
 
 // handle the POST request to add a Nurse
 findNurseRouter.post("/", findNurseController.addNurse);
