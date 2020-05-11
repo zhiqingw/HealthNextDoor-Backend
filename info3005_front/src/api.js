@@ -22,7 +22,7 @@ export function getCaregiver(id) {
 }
 
 export function addCaregiver(caregiver) {
-  const { id, first_name, last_name } = caregiver;
+  const { id, first_name, last_name, gender, introduction } = caregiver;
   if (!id || !first_name || !last_name) {
     alert("must include all fields");
     return;
@@ -32,6 +32,19 @@ export function addCaregiver(caregiver) {
 
   // TODO
   // return fetch statement to add an author
+  return fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      id,
+      first_name,
+      last_name,
+      gender,
+      introduction
+    })
+  });
 }
 
 export function updateCaregiver(caregiver) {
@@ -74,7 +87,9 @@ export function updateCaregiver(caregiver) {
 
 export function deleteCaregiver(id) {
   const endpoint = BASE_URL + `/findCaregiver/${id}`;
-
+  return fetch(endpoint, {
+    method: "DELETE",
+  });
   // return fetch query
 }
 
