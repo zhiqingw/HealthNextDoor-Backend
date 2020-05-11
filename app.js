@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-
+require("./models");
 // use the body-parser middleware, which parses request bodies into req.body
 // support parsing of json
 app.use(bodyParser.json());
@@ -15,12 +15,12 @@ app.get("/", (req, res) => {
 });
 
 const discussionForumRouter = require("./routes/discussionForumRouter");
-const findNurseRouter = require("./routes/findNurseRouter");
+const findCaregiverRouter = require("./routes/findCaregiverRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
 const findVolunteerRouter = require("./routes/findVolunteerRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
 app.use("/discussionForum", discussionForumRouter);
-app.use("/findNurse", findNurseRouter);
+app.use("/findCaregiver", findCaregiverRouter);
 app.use("/findPatient", findPatientRouter);
 app.use("/findVolunteer", findVolunteerRouter);
 app.use("/knowledge", knowledgeRouter);
