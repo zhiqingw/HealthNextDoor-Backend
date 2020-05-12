@@ -8,5 +8,5 @@ const patientSchema = new mongoose.Schema({
     introduction: String,
 },{versionKey: false});
 
-const Patient = mongoose.model("patient", patientSchema, "patient");
+const Patient = mongoose.model("Patient", patientSchema, "Patient");
 module.exports = Patient;

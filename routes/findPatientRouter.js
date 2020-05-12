@@ -8,7 +8,7 @@ const findPatientController = require("../controllers/findPatientController.js")
 
 // handle the GET request on root of the findPatient path
 // i.e. get all Patient
-findPatientRouter.get("/", findPatientController.getAllPatient);
+findPatientRouter.get("/", findPatientController.getAllPatients);
 
 // handle the GET request to get a Patient by Name
 // note that :name refers to a param, accessed by req.params.name in controller fn

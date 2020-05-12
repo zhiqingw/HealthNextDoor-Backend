@@ -1,7 +1,7 @@
 // import the findPatients model
 // i.e. provide the controller a link to the findPatients model
 const mongoose = require("mongoose");
-const Patient = mongoose.model("patient");
+const Patient = mongoose.model("Patient");
 // function to handle a request to get all Nurse
 
 const getAllPatients = async (req, res) => {
