@@ -29,3 +29,4 @@ db.once("open", async () => {
 
 require("./caregiver");
 require("./Patient");
+require("./user");
