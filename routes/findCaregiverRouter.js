@@ -14,16 +14,18 @@ findCaregiverRouter.get("/", findCaregiverController.getAllCaregivers);
 //findCaregiverRouter.get("/:name", findCaregiverController.getNurseByName);
 
 // handle the GET request to get a Nurse by ID
-findCaregiverRouter.get("/:id", findCaregiverController.getCaregiverByID);
+findCaregiverRouter.get("/:username", findCaregiverController.getCaregiverByUsername);
+
+
 
 // handle the POST request to add a Nurse
 findCaregiverRouter.post("/", findCaregiverController.addCaregiver);
 
 // handle the POST request to update a Nurse
-findCaregiverRouter.post("/:id", findCaregiverController.updateCaregiver);
+findCaregiverRouter.post("/:username", findCaregiverController.updateCaregiver);
 
 //handle the DELETE request to delete a post
-findCaregiverRouter.delete("/:id", findCaregiverController.deleteCaregiver);
+findCaregiverRouter.delete("/:username", findCaregiverController.deleteCaregiver);
 
 // export the router
 module.exports = findCaregiverRouter;

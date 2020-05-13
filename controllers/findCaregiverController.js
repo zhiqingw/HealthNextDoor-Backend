@@ -27,8 +27,27 @@ const getAllCaregivers = async (req, res) => {
         res.send("Not Found");
     }
 };*/
+const getCaregiverByUsername = async (req, res) => {
+    const caregiverUsername = req.params.username;
 
-const getCaregiverByID = async (req, res) => {
+    try {
+        const caregivers = await Caregiver.find({username: caregiverUsername});
+        if (!caregivers) {
+            res.status(400);
+            console.log("Author not found");
+            return res.send("Author not found");
+        }
+        const caregiver = caregivers[0];
+        console.log("Author found!!!", caregiver);
+        return res.send(caregiver);
+    } catch (err) {
+        res.status(400);
+        console.log(err);
+        return res.send("Database query failed");
+    }
+};
+
+/*const getCaregiverByID = async (req, res) => {
     const caregiverId = req.params.id;
 
     try {
@@ -49,7 +68,8 @@ const getCaregiverByID = async (req, res) => {
         console.log(err);
         return res.send("Database query failed");
     }
-};
+};*/
+
 
 // function to handle request to add Nurse
 const addCaregiver = async (req, res) => {
@@ -58,12 +78,12 @@ const addCaregiver = async (req, res) => {
     res.send("done");
 };
 
-// function to modify Nurse by ID
+// function to modify Nurse by username
 const updateCaregiver = async (req, res) => {
-    const caregiverId = req.params.id;
+    const caregiverUsername = req.params.username;
     const new_caregiver = req.body;
     try {
-        const caregivers = await Caregiver.find({id: caregiverId});
+        const caregivers = await Caregiver.find({username: caregiverUsername});
         if (!caregivers) {
             res.status(400);
             console.log("Author not found");
@@ -90,8 +110,8 @@ const updateCaregiver = async (req, res) => {
 
 const deleteCaregiver = (req, res) => {
     // delete post in the database via ID
-    const deleted_id = req.params.id;
-    Caregiver.remove({id: deleted_id}, function(err, obj) {
+    const deleted_username = req.params.username;
+    Caregiver.remove({username: deleted_username}, function(err, obj) {
         if (err) throw err;
     });
     return res.send("deleted");
@@ -100,8 +120,8 @@ const deleteCaregiver = (req, res) => {
 // remember to export the functions
 module.exports = {
     getAllCaregivers,
-    getCaregiverByID,
     addCaregiver,
     updateCaregiver,
-    deleteCaregiver
+    deleteCaregiver,
+    getCaregiverByUsername
 };
