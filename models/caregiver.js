@@ -5,7 +5,10 @@ const caregiverSchema = new mongoose.Schema({
     last_name: String,
     gender: String,
     introduction: String,
-    username: String
+    username: String,
+    salary: String,
+    address: String,
+    working_experience: String
 },{versionKey: false});
 
 const Caregiver = mongoose.model("caregiver", caregiverSchema, "caregiver");
