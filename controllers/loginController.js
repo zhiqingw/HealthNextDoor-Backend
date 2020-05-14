@@ -80,6 +80,12 @@ const deleteUser = (req, res) => {
 };
 
 const login = async (req, res) => {
+    if(req.session.islogin){
+        req.session.errors = [{
+            msg: `Already log in.`
+        }];
+
+    }
     const userName = req.body.username;
     const password = req.body.password;
     console.log(userName,password);
@@ -88,17 +94,30 @@ const login = async (req, res) => {
         if (!users) {
             res.status(400);
             console.log("User not found");
-            return res.send("User not found");
+            req.session.errors = [{
+                msg: `User not found.`
+            }];
+            req.session.save();
+            return res.redirect(req.url);
         }
 
         const user = users[0];
         console.log("User found!!!", userName);
         if(user.password===password){
+
+            req.session.user = user;
+            req.session.islogin= true;
+            req.session.save();
             res.status(200);
+
             return res.send("match!!");
         }
         else{
             res.status(400);
+            req.session.errors = [{
+                msg: `Wrong password`
+            }];
+            req.session.save();
             return res.send("not match!!")
         }
 
