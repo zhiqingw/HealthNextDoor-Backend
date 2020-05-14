@@ -96,7 +96,6 @@ const login = async (req, res) => {
         console.log("User found!!!", userName);
         if(user.password===password){
             res.status(200);
-            sessionStorage.setItem("username",userName);
             return res.send("match!!");
         }
         else{
