@@ -85,11 +85,10 @@ const login = async (req, res) => {
     const password = req.body.password;
     console.log(userName,password);
     try {
-        const users = await User.find({username: userName});
+        const users = await User.findOne({username: userName});
         if (!users) {
             res.status(400);
             console.log("User not found");
-            return res.redirect(req.url);
         }
 
         const user = users[0];
