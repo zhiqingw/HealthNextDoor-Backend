@@ -6,6 +6,7 @@ const addUser = async (req, res) => {
     const userName = req.body.username;
     const password = req.body.password;
     try {
+        /*
         User.exists({ username: userName }, function(err, result) {
             if (err) {
                 res.send(err);
@@ -20,7 +21,19 @@ const addUser = async (req, res) => {
 
             }
 
-        });
+        });*/
+        const users = await User.findOne({username: userName});
+
+        if (!users) {
+            res.status(200);
+            console.log("User not found");
+            User.create(new_user);
+            return res.send("User created");
+        }
+        else{
+            res.status(400);
+            return res.send("user existed");
+        }
 
 
     } catch (err) {
