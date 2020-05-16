@@ -74,7 +74,28 @@ const getCaregiverByUsername = async (req, res) => {
 // function to handle request to add Nurse
 const addCaregiver = async (req, res) => {
     const new_caregiver = req.body;
-    Caregiver.create(new_caregiver);
+    const userName = req.body.username;
+    try {
+        const users = await Caregiver.findOne({username: userName});
+        if (!users) {
+            res.status(200);
+            console.log("User not found");
+            Caregiver.create(new_caregiver);
+            return res.send("post created");
+        }
+        else{
+            res.status(400);
+            return res.send("existed");
+        }
+
+
+    } catch (err) {
+        res.status(400);
+        console.log(err);
+        return res.send("Database query failed");
+    }
+   /* const new_caregiver = req.body;
+    Caregiver.create(new_caregiver);*/
     res.send("done");
 };
 
