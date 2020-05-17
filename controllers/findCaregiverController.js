@@ -122,6 +122,7 @@ const updateCaregiver = async (req, res) => {
         caregiver["address"] = new_caregiver["address"];
         caregiver["salary"] = new_caregiver["salary"];
         caregiver["working_experience"] = new_caregiver["working_experience"];
+        caregiver["contact_information"] = new_caregiver["contact_information"];
         await caregiver.save();
         res.send(caregiver);
 

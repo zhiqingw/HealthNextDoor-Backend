@@ -42,3 +42,13 @@ like video, paper, tutorial session, questionnaire, etc.
 These can be post by using "addKnowledge", update by using "updateKnowledge", and delete by using "deleteKnowledge".
 Our users can use "getAllKnowledge" to see all of resources, and use "getKnowledgeByName" to search what they want.
 This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/Knowledge/
+
+For the function of login, we design this function to let the user log in and give access to user homepage in front end
+to modify post and password.
+These can be login by using "login".
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/login/
+
+For the function of signup, we design this function to let the user sign up and give access to user homepage, and user
+can make a post as soon as they have an account.
+These can be post by using "signup".
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/signup/

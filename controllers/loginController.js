@@ -78,7 +78,7 @@ const deleteUser = (req, res) => {
     });
     return res.send("deleted");
 };
-
+/*check if username correct*/
 const login = async (req, res) => {
 
     const userName = req.body.username;

@@ -10,6 +10,7 @@ const caregiverSchema = new mongoose.Schema({
     address:String,
     salary:String,
     working_experience:String,
+    contact_information:String,
 },{versionKey: false});
 
 const Caregiver = mongoose.model("caregiver", caregiverSchema, "caregiver");

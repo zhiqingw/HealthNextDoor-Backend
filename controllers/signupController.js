@@ -7,6 +7,7 @@ const addUser = async (req, res) => {
     const password = req.body.password;
     try {
 
+        /*check if username already exist*/
         const users = await User.findOne({username: userName});
 
         if (!users) {
@@ -28,7 +29,6 @@ const addUser = async (req, res) => {
     }
 };
 
-//module.exports=login;
 module.exports = {
     addUser
 };
