@@ -22,14 +22,12 @@ app.get("/", (req, res) => {
 const discussionForumRouter = require("./routes/discussionForumRouter");
 const findCaregiverRouter = require("./routes/findCaregiverRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
-const findVolunteerRouter = require("./routes/findVolunteerRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
 const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
 app.use("/discussionForum", discussionForumRouter);
 app.use("/findCaregiver", findCaregiverRouter);
 app.use("/findPatient", findPatientRouter);
-app.use("/findVolunteer", findVolunteerRouter);
 app.use("/knowledge", knowledgeRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
