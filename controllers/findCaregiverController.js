@@ -123,7 +123,8 @@ const updateCaregiver = async (req, res) => {
         caregiver["salary"] = new_caregiver["salary"];
 
         await caregiver.save();
-        res.send(new_caregiver);
+        res.send(caregiver);
+
     } catch (err) {
         res.status(400);
         console.log(err);
