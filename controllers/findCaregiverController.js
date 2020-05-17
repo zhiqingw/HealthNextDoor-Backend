@@ -118,6 +118,9 @@ const updateCaregiver = async (req, res) => {
         caregiver["last_name"] = new_caregiver["last_name"];
         caregiver["gender"] = new_caregiver["gender"];
         caregiver["introduction"] = new_caregiver["introduction"];
+        caregiver["age"] = new_caregiver["age"];
+        caregiver["address"] = new_caregiver["address"];
+        caregiver["salary"] = new_caregiver["salary"];
 
         await caregiver.save();
         res.send(new_caregiver);
