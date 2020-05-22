@@ -14,17 +14,17 @@ findPatientRouter.get("/", findPatientController.getAllPatients);
 // note that :name refers to a param, accessed by req.params.name in controller fn
 //findPatientRouter.get("/:name", findPatientController.getPatientByName);
 
-// handle the GET request to get a Patient by ID
-findPatientRouter.get("/:id", findPatientController.getPatientByID);
+// handle the GET request to get a Patient by Username
+findPatientRouter.get("/:username", findPatientController.getPatientByUsername);
 
 // handle the POST request to add a Patient
 findPatientRouter.post("/", findPatientController.addPatient);
 
 // handle the POST request to update a Patient
-findPatientRouter.post("/:id", findPatientController.updatePatient);
+findPatientRouter.post("/:username", findPatientController.updatePatient);
 
 //handle the DELETE request to delete a patient
-findPatientRouter.delete("/:id", findPatientController.deletePatient);
+findPatientRouter.delete("/:username", findPatientController.deletePatient);
 
 // export the router
 module.exports = findPatientRouter;

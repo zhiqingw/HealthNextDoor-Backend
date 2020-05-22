@@ -28,6 +28,7 @@ const getAllPatients = async (req, res) => {
     }
 };*/
 
+/*
 const getPatientByID = async (req, res) => {
     const patientId = req.params.id;
 
@@ -49,37 +50,77 @@ const getPatientByID = async (req, res) => {
         console.log(err);
         return res.send("Database query failed");
     }
+};*/
+const getPatientByUsername = async (req, res) => {
+    const patientUsername = req.params.username;
+
+    try {
+        const patient = await Patient.findOne({username: patientUsername});
+        if (!patient) {
+            res.status(400);
+            console.log("Patient not found");
+            return res.send("Patient not found");
+        }
+        console.log("Patient found!!!", patient);
+        return res.send(patient);
+    } catch (err) {
+        res.status(400);
+        console.log(err);
+        return res.send("Database query failed");
+    }
 };
 
 // function to handle request to add Nurse
 const addPatient = async (req, res) => {
     const new_patient = req.body;
-    Patient.create(new_patient);
+    const userName = req.body.username;
+    try {
+        const users = await Patient.findOne({username: userName});
+        if (!users) {
+            res.status(200);
+            console.log("Patient not found");
+            Patient.create(new_patient);
+            return res.send("post created");
+        }
+        else{
+            res.status(400);
+            return res.send("existed");
+        }
+
+
+    } catch (err) {
+        res.status(400);
+        console.log(err);
+        return res.send("Database query failed");
+    }
+
     res.send("done");
 };
 
 // function to modify Nurse by ID
 const updatePatient = async (req, res) => {
-    const patientId = req.params.id;
+    const patientUsername = req.params.username;
     const new_patient = req.body;
     try {
-        const patients = await Patient.find({id: patientId});
-        if (!patients) {
+        const patient = await Patient.findOne({username: patientUsername});
+        if (!patient) {
             res.status(400);
-            console.log("Author not found");
-            return res.send("Author not found");
+            console.log("Patient not found");
+            return res.send("Patient not found");
         }
 
-        const patient = patients[0];
-        console.log("Author found!!!", patient);
+        console.log("Patient found!!!", patient);
 
         patient["first_name"] = new_patient["first_name"];
         patient["last_name"] = new_patient["last_name"];
         patient["gender"] = new_patient["gender"];
         patient["introduction"] = new_patient["introduction"];
-
+        patient["age"] = new_patient["age"];
+        patient["address"] = new_patient["address"];
+        patient["contact_information"] = new_patient["contact_information"];
         await patient.save();
-        res.send(new_patient);
+        res.send(patient);
+
     } catch (err) {
         res.status(400);
         console.log(err);
@@ -90,8 +131,8 @@ const updatePatient = async (req, res) => {
 
 const deletePatient = (req, res) => {
     // delete post in the database via ID
-    const deleted_id = req.params.id;
-    Patient.remove({id: deleted_id}, function(err, obj) {
+    const deleted_username = req.params.username;
+    Patient.remove({username: deleted_username}, function(err, obj) {
         if (err) throw err;
     });
     return res.send("deleted");
@@ -100,7 +141,7 @@ const deletePatient = (req, res) => {
 // remember to export the functions
 module.exports = {
     getAllPatients,
-    getPatientByID,
+    getPatientByUsername,
     addPatient,
     updatePatient,
     deletePatient
