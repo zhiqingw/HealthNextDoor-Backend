@@ -110,14 +110,27 @@ const updatePatient = async (req, res) => {
         }
 
         console.log("Patient found!!!", patient);
-
-        patient["first_name"] = new_patient["first_name"];
-        patient["last_name"] = new_patient["last_name"];
-        patient["gender"] = new_patient["gender"];
-        patient["introduction"] = new_patient["introduction"];
-        patient["age"] = new_patient["age"];
-        patient["address"] = new_patient["address"];
-        patient["contact_information"] = new_patient["contact_information"];
+        if(new_patient["first_name"]){
+            patient["first_name"] = new_patient["first_name"];
+        }
+        if(new_patient["last_name"]){
+            patient["last_name"] = new_patient["last_name"];
+        }
+        if(new_patient["gender"]){
+            patient["gender"] = new_patient["gender"];
+        }
+        if(new_patient["introduction"]){
+            patient["introduction"] = new_patient["introduction"];
+        }
+        if(new_patient["age"]){
+            patient["age"] = new_patient["age"];
+        }
+        if(new_patient["address"]){
+            patient["address"] = new_patient["address"];
+        }
+        if(new_patient["contact_information"]){
+            patient["contact_information"] = new_patient["contact_information"];
+        }
         await patient.save();
         res.send(patient);
 

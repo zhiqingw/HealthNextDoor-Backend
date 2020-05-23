@@ -113,16 +113,33 @@ const updateCaregiver = async (req, res) => {
 
         const caregiver = caregivers[0];
         console.log("Author found!!!", caregiver);
-
-        caregiver["first_name"] = new_caregiver["first_name"];
-        caregiver["last_name"] = new_caregiver["last_name"];
-        caregiver["gender"] = new_caregiver["gender"];
-        caregiver["introduction"] = new_caregiver["introduction"];
-        caregiver["age"] = new_caregiver["age"];
-        caregiver["address"] = new_caregiver["address"];
-        caregiver["salary"] = new_caregiver["salary"];
-        caregiver["working_experience"] = new_caregiver["working_experience"];
-        caregiver["contact_information"] = new_caregiver["contact_information"];
+        if(new_caregiver["first_name"]){
+            caregiver["first_name"] = new_caregiver["first_name"];
+        }
+        if(new_caregiver["last_name"]){
+            caregiver["last_name"] = new_caregiver["last_name"];
+        }
+        if(new_caregiver["gender"]){
+            caregiver["gender"] = new_caregiver["gender"];
+        }
+        if(new_caregiver["introduction"]){
+            caregiver["introduction"] = new_caregiver["introduction"];
+        }
+        if(new_caregiver["age"]){
+            caregiver["age"] = new_caregiver["age"];
+        }
+        if(new_caregiver["address"]){
+            caregiver["address"] = new_caregiver["address"];
+        }
+        if(new_caregiver["salary"]){
+            caregiver["salary"] = new_caregiver["salary"];
+        }
+        if(new_caregiver["working_experience"]){
+            caregiver["working_experience"] = new_caregiver["working_experience"];
+        }
+        if(new_caregiver["contact_information"]){
+            caregiver["contact_information"] = new_caregiver["contact_information"];
+        }
         await caregiver.save();
         res.send(caregiver);
 
