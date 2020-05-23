@@ -4,7 +4,6 @@ const User = mongoose.model("user");
 const addUser = async (req, res) => {
     const new_user = req.body;
     const userName = req.body.username;
-    const password = req.body.password;
     try {
 
         /*check if username already exist*/

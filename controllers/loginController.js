@@ -19,25 +19,69 @@ const getAllUsers = async (req, res) => {
 const updateUser = async (req, res) => {
     const userName = req.params.name;
     const new_user = req.body;
-
+    const action = new_user["action"];
 
     try {
-        const users = await User.find({username: userName});
-        if (!users) {
+        const user = await User.findOne({username: userName});
+        if (!user) {
             res.status(400);
             console.log("User not found");
             return res.send("User not found");
         }
-
-        const user = users[0];
+        if(action){
+            const status = action[0];
+            const target = action[1];
+            if(status==="accept"){
+                if(user["sentReq"].includes(target)){
+                    const index = user["sentReq"].indexOf(target);
+                    user["sentReq"].splice(index, 1);
+                    user["orderList"].push(target);
+                }
+                else if(user["receiveReq"].includes(target)){
+                    const index = user["receiveReq"].indexOf(target);
+                    user["receiveReq"].splice(index, 1);
+                    user["orderList"].push(target);
+                }
+            }
+            else if(status==="decline"){
+                if(user["sentReq"].includes(target)){
+                    const index = user["sentReq"].indexOf(target);
+                    user["sentReq"].splice(index, 1);
+                }
+                else if(user["receiveReq"].includes(target)){
+                    const index = user["receiveReq"].indexOf(target);
+                    user["receiveReq"].splice(index, 1);
+                }
+            }
+            else if(status==="complete"){
+                if(user["orderList"].includes(target)){
+                    const index = user["sentReq"].indexOf(target);
+                    user["orderList"].splice(index, 1);
+                    user["orderHistory"].push(target);
+                }
+            }
+        }
         console.log("User found!!!", user);
-
-        user["userName"] = new_user["userName"];
-        user["password"] = new_user["password"];
-
-
+        if(new_user["userName"]){
+            user["userName"] = new_user["userName"];
+        }
+        if(new_user["password"]){
+            user["password"] = new_user["password"];
+        }
+        if(new_user["sentReq"]){
+            user["sentReq"] = new_user["sentReq"];
+        }
+        if(new_user["receiveReq"]){
+            user["receiveReq"] = new_user["receiveReq"];
+        }
+        if(new_user["orderList"]){
+            user["orderList"] = new_user["orderList"];
+        }
+        if(new_user["orderHistory"]){
+            user["orderHistory"] = new_user["orderHistory"];
+        }
         await user.save();
-        res.send(new_user);
+        res.send(user);
     } catch (err) {
         res.status(400);
         console.log(err);
@@ -51,15 +95,14 @@ const getUserByName = async (req, res) => {
     const UserName = req.params.name;
 
     try {
-        const users = await User.find({username: UserName});
-        if (!users) {
+        const user = await User.findOne({username: UserName});
+        if (!user) {
             res.status(400);
             console.log("User not found");
             return res.send("User not found");
         }
 
-        const user = users[0];
-        console.log("User found!!!", UserName);
+        console.log("User found!!!", user);
 
 
         return res.send(user);
