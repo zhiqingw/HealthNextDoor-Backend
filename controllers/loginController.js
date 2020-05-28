@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("user");
-
+var passwordHash = require('password-hash');
 const getAllUsers = async (req, res) => {
 
     try {
@@ -60,10 +60,22 @@ const updateUser = async (req, res) => {
                     user["orderHistory"].push(target);
                 }
             }
+            else if (status === "send"){
+                if((!user["orderList"].includes(target))
+                    && (!user["receiveReq"].includes(target)) && (!user["sentReq"].includes(target))){
+                    const received_user = await User.findOne({username: target});
+                    if(!received_user){
+                        return res.send("User you want to add is not found");
+                    }
+                    user["sentReq"].push(target);
+                    received_user["receiveReq"].push(user["username"]);
+                    await received_user.save();
+                }
+            }
         }
         console.log("User found!!!", user);
-        if(new_user["userName"]){
-            user["userName"] = new_user["userName"];
+        if(new_user["username"]){
+            user["username"] = new_user["username"];
         }
         if(new_user["password"]){
             user["password"] = new_user["password"];
@@ -128,16 +140,15 @@ const login = async (req, res) => {
     const password = req.body.password;
     console.log(userName,password);
     try {
-        const users = await User.find({username: userName});
-        if (!users) {
+        const user = await User.findOne({username: userName});
+        if (!user) {
             res.status(400);
             console.log("User not found");
             return res.redirect(req.url);
         }
 
-        const user = users[0];
         console.log("User found!!!", userName);
-        if(user.password===password){
+        if(passwordHash.verify(password, user["password"])){
             res.status(200);
             return res.send("match!!");
         }

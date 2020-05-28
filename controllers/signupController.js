@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("user");
-
+var passwordHash = require('password-hash');
 const addUser = async (req, res) => {
     const new_user = req.body;
     const userName = req.body.username;
+    var password = req.body.password;
     try {
 
         /*check if username already exist*/
         const users = await User.findOne({username: userName});
-
+        var hashedPassword = passwordHash.generate(password);
+        new_user['password'] = hashedPassword;
         if (!users) {
             res.status(200);
             console.log("User not found");
