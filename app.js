@@ -25,12 +25,14 @@ const findPatientRouter = require("./routes/findPatientRouter");
 const knowledgeRouter = require("./routes/knowledgeRouter");
 const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
+const userRouter = require("./routes/userRouter");
 app.use("/discussionForum", discussionForumRouter);
 app.use("/findCaregiver", findCaregiverRouter);
 app.use("/findPatient", findPatientRouter);
 app.use("/knowledge", knowledgeRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
+app.use("/user", userRouter);
 // start app and listen for incoming requests on port 3000
 app.listen(process.env.PORT || 3000, () => {
   console.log("The library app is running!");
