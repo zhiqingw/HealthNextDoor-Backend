@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("user");
-
+var passwordHash = require('password-hash');
 const getAllUsers = async (req, res) => {
 
     try {
@@ -140,16 +140,15 @@ const login = async (req, res) => {
     const password = req.body.password;
     console.log(userName,password);
     try {
-        const users = await User.find({username: userName});
-        if (!users) {
+        const user = await User.findOne({username: userName});
+        if (!user) {
             res.status(400);
             console.log("User not found");
             return res.redirect(req.url);
         }
 
-        const user = users[0];
         console.log("User found!!!", userName);
-        if(user.password===password){
+        if(passwordHash.verify(password, user["password"])){
             res.status(200);
             return res.send("match!!");
         }
