@@ -60,10 +60,22 @@ const updateUser = async (req, res) => {
                     user["orderHistory"].push(target);
                 }
             }
+            else if (status === "send"){
+                if((!user["orderList"].includes(target))
+                    && (!user["receiveReq"].includes(target)) && (!user["sentReq"].includes(target))){
+                    const received_user = await User.findOne({username: target});
+                    if(!received_user){
+                        return res.send("User you want to add is not found");
+                    }
+                    user["sentReq"].push(target);
+                    received_user["receiveReq"].push(user["username"]);
+                    await received_user.save();
+                }
+            }
         }
         console.log("User found!!!", user);
-        if(new_user["userName"]){
-            user["userName"] = new_user["userName"];
+        if(new_user["username"]){
+            user["username"] = new_user["username"];
         }
         if(new_user["password"]){
             user["password"] = new_user["password"];
