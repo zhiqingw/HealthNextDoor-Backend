@@ -11,6 +11,9 @@ const caregiverSchema = new mongoose.Schema({
     salary:String,
     working_experience:String,
     contact_information:String,
+    rate_history:Array,
+    rate:Number,
+    comment:Array
 },{versionKey: false});
 
 const Caregiver = mongoose.model("caregiver", caregiverSchema, "caregiver");

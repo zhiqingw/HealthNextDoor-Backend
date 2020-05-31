@@ -110,7 +110,7 @@ const updateCaregiver = async (req, res) => {
             console.log("Author not found");
             return res.send("Author not found");
         }
-
+        
         const caregiver = caregivers[0];
         console.log("Author found!!!", caregiver);
         if(new_caregiver["first_name"]){
@@ -139,6 +139,9 @@ const updateCaregiver = async (req, res) => {
         }
         if(new_caregiver["contact_information"]){
             caregiver["contact_information"] = new_caregiver["contact_information"];
+        }
+        if(new_caregiver["comment"]) {
+            caregiver["comment"].push(new_caregiver["comment"]);
         }
         await caregiver.save();
         res.send(caregiver);

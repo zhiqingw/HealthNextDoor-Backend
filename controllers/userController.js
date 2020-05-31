@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("user");
+const Caregiver = mongoose.model("caregiver");
 const getAllUsers = async (req, res) => {
 
     try {
@@ -31,15 +32,14 @@ const updateUser = async (req, res) => {
             const status = action[0];
             const target = action[1];
             if(status==="accept"){
-                if(user["sentReq"].includes(target)){
-                    const index = user["sentReq"].indexOf(target);
-                    user["sentReq"].splice(index, 1);
-                    user["orderList"].push(target);
-                }
-                else if(user["receiveReq"].includes(target)){
+                 if(user["receiveReq"].includes(target)){
                     const index = user["receiveReq"].indexOf(target);
                     user["receiveReq"].splice(index, 1);
                     user["orderList"].push(target);
+                    const sender = await User.findOne({username: target});
+                    const index_sender = sender["sendReq"].indexOf(user["username"]);
+                    sender["sendReq"].splice(index_sender,1);
+                    await sender.save();
                 }
             }
             else if(status==="decline"){
@@ -69,6 +69,30 @@ const updateUser = async (req, res) => {
                     user["sentReq"].push(target);
                     received_user["receiveReq"].push(user["username"]);
                     await received_user.save();
+                }
+            }
+            else if (status ==="rate"){
+                var rate = action[2];
+                if(!user["orderHistory"].includes(target)){
+                    return res.send("Caregiver not found");
+                }
+                else{
+                    const caregiver = await Caregiver.findOne({username: target});
+                    caregiver["rate_history"].push(rate);
+                    caregiver["rate"] = mean(caregiver["rate_history"]);
+                    await caregiver.save();
+
+                }
+            }
+            else if (status ==="comment"){
+                var comment = action[2];
+                if(!user["orderHistory"].includes(target)){
+                    return res.send("Caregiver not found");
+                }
+                else{
+                    const caregiver = await Caregiver.findOne({username: target});
+                    caregiver["comment"].push(comment);
+                    await caregiver.save();
                 }
             }
         }
@@ -132,6 +156,15 @@ const deleteUser = (req, res) => {
     });
     return res.send("deleted");
 };
+
+function mean(numbers){
+    var total = 0, i;
+    console.log("length is %d", numbers.length);
+    for (i = 0; i < numbers.length; i += 1) {
+        total += (numbers[i]-'0');
+    }
+   return total / numbers.length;
+}
 
 module.exports = {
     getAllUsers,
