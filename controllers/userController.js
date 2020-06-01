@@ -54,7 +54,7 @@ const updateUser = async (req, res) => {
             }
             else if(status==="complete"){
                 if(user["orderList"].includes(target)){
-                    const index = user["sentReq"].indexOf(target);
+                    const index = user["orderList"].indexOf(target);
                     user["orderList"].splice(index, 1);
                     user["orderHistory"].push(target);
                 }
