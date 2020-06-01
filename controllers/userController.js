@@ -37,8 +37,9 @@ const updateUser = async (req, res) => {
                     user["receiveReq"].splice(index, 1);
                     user["orderList"].push(target);
                     const sender = await User.findOne({username: target});
-                    const index_sender = sender["sendReq"].indexOf(user["username"]);
-                    sender["sendReq"].splice(index_sender,1);
+                    const index_sender = sender["sentReq"].indexOf(userName);
+                    sender["sentReq"].splice(index_sender,1);
+                    sender["orderList"].push(userName);
                     await sender.save();
                 }
             }
@@ -46,17 +47,30 @@ const updateUser = async (req, res) => {
                 if(user["sentReq"].includes(target)){
                     const index = user["sentReq"].indexOf(target);
                     user["sentReq"].splice(index, 1);
+                    const sender = await User.findOne({username: target});
+                    const index_sender = sender["receiveReq"].indexOf(userName);
+                    sender["receiveReq"].splice(index_sender,1);
+                    await sender.save();
                 }
                 else if(user["receiveReq"].includes(target)){
                     const index = user["receiveReq"].indexOf(target);
                     user["receiveReq"].splice(index, 1);
+                    const sender = await User.findOne({username: target});
+                    const index_sender = sender["sentReq"].indexOf(userName);
+                    sender["sentReq"].splice(index_sender,1);
+                    await sender.save();
                 }
             }
             else if(status==="complete"){
                 if(user["orderList"].includes(target)){
-                    const index = user["sentReq"].indexOf(target);
+                    const index = user["orderList"].indexOf(target);
                     user["orderList"].splice(index, 1);
                     user["orderHistory"].push(target);
+                    const sender = await User.findOne({username: target});
+                    const index_sender = sender["orderList"].indexOf(userName);
+                    sender["orderList"].splice(index_sender,1);
+                    sender["orderHistory"].push(userName);
+                    await sender.save();
                 }
             }
             else if (status === "send"){
@@ -64,6 +78,7 @@ const updateUser = async (req, res) => {
                     && (!user["receiveReq"].includes(target)) && (!user["sentReq"].includes(target))){
                     const received_user = await User.findOne({username: target});
                     if(!received_user){
+                        res.status(400);
                         return res.send("User you want to add is not found");
                     }
                     user["sentReq"].push(target);
@@ -74,9 +89,11 @@ const updateUser = async (req, res) => {
             else if (status ==="rate"){
                 var rate = action[2];
                 if(!user["orderHistory"].includes(target)){
+                    res.status(400);
                     return res.send("Caregiver not found");
                 }
                 else{
+                    res.status(200);
                     const caregiver = await Caregiver.findOne({username: target});
                     caregiver["rate_history"].push(rate);
                     caregiver["rate"] = mean(caregiver["rate_history"]);
