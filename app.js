@@ -26,6 +26,8 @@ const knowledgeRouter = require("./routes/knowledgeRouter");
 const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
 const userRouter = require("./routes/userRouter");
+const uploadRouter = require("./routes/uploadRouter");
+app.use("/upload", uploadRouter);
 app.use("/discussionForum", discussionForumRouter);
 app.use("/findCaregiver", findCaregiverRouter);
 app.use("/findPatient", findPatientRouter);
