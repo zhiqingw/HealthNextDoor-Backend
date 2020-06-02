@@ -104,11 +104,11 @@ const updateUser = async (req, res) => {
             else if (status ==="comment"){
                 var comment = action[2];
 
-                if(!user["orderHistory"].includes(userName)){
+                if(!user["orderHistory"].includes(target)){
                     return res.send("Caregiver not found");
                 }
                 else{
-                    const caregiver = await Caregiver.findOne({username: userName});
+                    const caregiver = await Caregiver.findOne({username: target});
                     caregiver["comment"].push(comment);
                     await caregiver.save();
                 }
