@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+
 const mongoose = require("mongoose");
 
 // Connect to MongoDB
@@ -7,6 +8,7 @@ const mongoose = require("mongoose");
 MONGO_URL = "mongodb+srv://ElliotXue:a123@cluster0-nxqvq.mongodb.net/test?retryWrites=true&w=majority";
 
 console.log(MONGO_URL);
+
 
 
 

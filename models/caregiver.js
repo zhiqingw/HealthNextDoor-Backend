@@ -17,4 +17,4 @@ const caregiverSchema = new mongoose.Schema({
 },{versionKey: false});
 
 const Caregiver = mongoose.model("caregiver", caregiverSchema, "caregiver");
-module.exports = Caregiver;
+module.exports = caregiverSchema;

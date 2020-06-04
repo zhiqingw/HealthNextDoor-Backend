@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+require('dotenv/config');
 const User = mongoose.model("user");
+const {createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken} = require('./tokens');
 var passwordHash = require('password-hash');
 /*check if username correct*/
 const login = async (req, res) => {
@@ -17,8 +19,12 @@ const login = async (req, res) => {
 
         console.log("User found!!!", userName);
         if(passwordHash.verify(password, user["password"])){
-            res.status(200);
-            return res.send("match!!");
+            const accessToken = createAccessToken(userName);
+            const refreshtoken = createRefreshToken(userName);
+            user.refreshtoken = refreshtoken;
+            sendRefreshToken(res, refreshtoken);
+            sendAccessToken(res, req, accessToken);
+
         }
         else{
             res.status(400);
@@ -33,6 +39,8 @@ const login = async (req, res) => {
     }
 
 };
+
+
 
 module.exports = {
     login
