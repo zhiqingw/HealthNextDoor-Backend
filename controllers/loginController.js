@@ -12,7 +12,7 @@ const login = async (req, res) => {
         if (!user) {
             res.status(400);
             console.log("User not found");
-            return res.redirect(req.url);
+            return res.send("not found");
         }
 
         console.log("User found!!!", userName);
