@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha test/**/*.js --exit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ronal Singh and Steven Tang",
   "license": "ISC",
@@ -20,13 +20,5 @@
     "multer-gridfs-storage": "^4.1.0",
     "passport": "latest",
     "password-hash": "^1.2.2"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "cookie-parser": "^1.4.5",
-    "jsonwebtoken": "^8.5.1",
-    "mocha": "^7.2.0",
-    "sinon": "^9.0.2",
-    "supertest": "^4.0.2"
   }
 }
