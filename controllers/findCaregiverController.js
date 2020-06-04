@@ -80,6 +80,15 @@ const addCaregiver = async (req, res) => {
         if (!users) {
             res.status(200);
             console.log("User not found");
+            if(!new_caregiver["rate"]){
+                new_caregiver["rate"]=null;
+            }
+            if(!new_caregiver["rate_history"]){
+                new_caregiver["rate_history"]=[];
+            }
+            if(!new_caregiver["comment"]){
+                new_caregiver["comment"]=[];
+            }
             Caregiver.create(new_caregiver);
             return res.send("post created");
         }
