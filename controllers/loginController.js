@@ -14,7 +14,7 @@ const login = async (req, res) => {
         if (!user) {
             res.status(400);
             console.log("User not found");
-            return res.send("not found");
+            return res.redirect(req.url);
         }
 
         console.log("User found!!!", userName);
