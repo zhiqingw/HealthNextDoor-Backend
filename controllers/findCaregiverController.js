@@ -1,9 +1,9 @@
 // import the findCaregivers model
 // i.e. provide the controller a link to the findCaregivers model
+require("../models")
 const mongoose = require("mongoose");
 const Caregiver = mongoose.model("caregiver");
 // function to handle a request to get all Nurse
-
 const getAllCaregivers = async (req, res) => {
 
     try {

@@ -88,6 +88,7 @@ const updateUser = async (req, res) => {
             }
             else if (status ==="rate"){
                 var rate = action[2];
+                var comment = action[3];
                 if(!user["orderHistory"].includes(target)){
                     res.status(400);
                     return res.send("Caregiver not found");
@@ -96,11 +97,13 @@ const updateUser = async (req, res) => {
                     res.status(200);
                     const caregiver = await Caregiver.findOne({username: target});
                     caregiver["rate_history"].push(rate);
+                    caregiver["comment"].push(comment);
                     caregiver["rate"] = mean(caregiver["rate_history"]);
                     await caregiver.save();
 
                 }
             }
+            /*
             else if (status ==="comment"){
                 var comment = action[2];
 
@@ -112,7 +115,7 @@ const updateUser = async (req, res) => {
                     caregiver["comment"].push(comment);
                     await caregiver.save();
                 }
-            }
+            }*/
         }
         console.log("User found!!!", user);
         if(new_user["username"]){

@@ -23,7 +23,9 @@ db.on("error", err => {
     console.error(err);
     process.exit(1);
 });
+
 db.once("open", async () => {
+    console.log("here!!!!!!!!!!!!");
     console.log("Mongo connection started on " + db.host + ":" + db.port);
 });
 

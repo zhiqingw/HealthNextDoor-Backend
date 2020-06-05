@@ -1,9 +1,10 @@
+require("./models");
 const express = require("express");
 const bodyParser = require("body-parser");
 
 
 const app = express();
-require("./models");
+
 const cors = require('cors');
 
 app.use(cors());
