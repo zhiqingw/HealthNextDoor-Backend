@@ -152,6 +152,9 @@ const updateCaregiver = async (req, res) => {
         if(new_caregiver["comment"]) {
             caregiver["comment"].push(new_caregiver["comment"]);
         }
+        if(new_caregiver["image"]){
+            caregiver["image"] = new_caregiver["image"];
+        }
         await caregiver.save();
         res.send(caregiver);
 

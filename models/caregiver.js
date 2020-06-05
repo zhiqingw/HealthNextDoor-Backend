@@ -13,7 +13,8 @@ const caregiverSchema = new mongoose.Schema({
     contact_information:String,
     rate_history:Array,
     rate:Number,
-    comment:Array
+    comment:Array,
+    image:String
 },{versionKey: false});
 
 const Caregiver = mongoose.model("caregiver", caregiverSchema, "caregiver");
