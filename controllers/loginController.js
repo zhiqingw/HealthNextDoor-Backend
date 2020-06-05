@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+require('dotenv/config');
 const User = mongoose.model("user");
+const {createAccessToken, createRefreshToken, sendAccessToken, sendRefreshToken} = require('./tokens');
 var passwordHash = require('password-hash');
 /*check if username correct*/
 const login = async (req, res) => {
