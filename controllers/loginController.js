@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-require('dotenv/config');
 const User = mongoose.model("user");
 var passwordHash = require('password-hash');
 /*check if username correct*/
