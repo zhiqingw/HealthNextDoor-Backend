@@ -1,4 +1,3 @@
-const cookieParser = require('cookie-parser');
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -6,7 +5,6 @@ require('dotenv/config');
 require("./models");
 const cors = require('cors');
 
-app.use(cookieParser());
 // use the body-parser middleware, which parses request bodies into req.body
 // support parsing of json
 
@@ -28,12 +26,6 @@ const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
 const userRouter = require("./routes/userRouter");
 const uploadRouter = require("./routes/uploadRouter");
-const logoutRouter = require("./routes/logoutRouter");
-const protectedRouter = require("./routes/protectedRouter");
-const refreshTokenRouter = require("./routes/refreshTokenRouter");
-app.use("/refresh_token", refreshTokenRouter);
-app.use("/protected", protectedRouter);
-app.use("/logout", logoutRouter);
 app.use("/upload", uploadRouter);
 app.use("/discussionForum", discussionForumRouter);
 app.use("/findCaregiver", findCaregiverRouter);
