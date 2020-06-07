@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("user");
 const Caregiver = mongoose.model("caregiver");
+var passwordHash = require('password-hash');
 const getAllUsers = async (req, res) => {
 
     try {
@@ -122,7 +123,8 @@ const updateUser = async (req, res) => {
             user["username"] = new_user["username"];
         }
         if(new_user["password"]){
-            user["password"] = new_user["password"];
+            var hashedPassword = passwordHash.generate(new_user["password"]);
+            user["password"] = hashedPassword;
         }
         if(new_user["sentReq"]){
             user["sentReq"] = new_user["sentReq"];
