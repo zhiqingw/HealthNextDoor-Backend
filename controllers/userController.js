@@ -86,6 +86,10 @@ const updateUser = async (req, res) => {
                     received_user["receiveReq"].push(user["username"]);
                     await received_user.save();
                 }
+                else{
+                    res.status(400);
+                    return res.send("already existed");
+                }
             }
             else if (status ==="rate"){
                 var rate = action[2];
