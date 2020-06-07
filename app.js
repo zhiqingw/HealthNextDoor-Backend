@@ -1,10 +1,13 @@
+require("./models");
 const express = require("express");
 const bodyParser = require("body-parser");
+
+
 const app = express();
-require('dotenv/config');
-require("./models");
+
 const cors = require('cors');
 
+app.use(cors());
 // use the body-parser middleware, which parses request bodies into req.body
 // support parsing of json
 
@@ -16,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("<H1>HealthNextDoor</H1>");
 });
-
 
 const discussionForumRouter = require("./routes/discussionForumRouter");
 const findCaregiverRouter = require("./routes/findCaregiverRouter");
@@ -38,5 +40,3 @@ app.use("/user", userRouter);
 app.listen(process.env.PORT || 3000, () => {
   console.log("The library app is running!");
 });
-
-module.exports = app;
