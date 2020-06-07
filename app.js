@@ -20,19 +20,15 @@ app.get("/", (req, res) => {
   res.send("<H1>HealthNextDoor</H1>");
 });
 
-const discussionForumRouter = require("./routes/discussionForumRouter");
 const findCaregiverRouter = require("./routes/findCaregiverRouter");
 const findPatientRouter = require("./routes/findPatientRouter");
-const knowledgeRouter = require("./routes/knowledgeRouter");
 const loginRouter = require("./routes/loginRouter");
 const signupRouter = require("./routes/signupRouter");
 const userRouter = require("./routes/userRouter");
 const uploadRouter = require("./routes/uploadRouter");
 app.use("/upload", uploadRouter);
-app.use("/discussionForum", discussionForumRouter);
 app.use("/findCaregiver", findCaregiverRouter);
 app.use("/findPatient", findPatientRouter);
-app.use("/knowledge", knowledgeRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);
 app.use("/user", userRouter);

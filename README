@@ -1,12 +1,3 @@
-For the function discussionForum, we want to build a community to allow it possible for the families helping each other,
-and we believe that this function will help family caregivers to relieve stress, get confidence and feel warmth.
-We allow our users to use the functionality "addPost" to post their questions,
-share their experiences with other users, and use "updatePost" to edit the original post.
-If our users want to search a specific post, they can use the functionality called "getPostByName", and if they want to
-get to the root of the discussion form and see all of the posts, they can use "getAllPost" as well.
-Also, the users would be able to delete their posts as well by using "deletePost".
-This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/discussionForum/
-
 For the function findNurse, we wish that patient families could use it to hire a part-time professional nurse.
 The nurse who want a part-time job could post their interests and personal information use "addNurse" functionality,
 and use "updateNurse" to edit any updates.
@@ -14,18 +5,6 @@ Then patient families can use "getAllNurse" to see all of the nurses' informatio
 want to find the specific one they can use "getNurseByID" functionality.
 When nurses once find the employers or don't want to get job anymore, they can delete themselves using "deleteNurse".
 This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findNurse/
-
-For the function findPatient and function findVolunteer, we know that there are many families that are not able to
-afford the cost of caring for dementia patients, and we also believe in that there are also many volunteers willing to
-help those families, so we would like to build a bridge to connect those two types of people.
-Our users can register themselves as patient or volunteer by using "addPatient" or "addVolunteer",
-and update by the corresponding update methods.
-Then they can look through all of the volunteers' or patients' information by using "getAllVolunteer" or
-"get AllPatient", or get the specific one using "getVolunteerByID" or "getPatientByID".
-Once they have no need for volunteers or don't want to be a volunteer anymore, they can use "deletePatient"
-or "deleteVolunteer" to remove their information.
-These could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/findPatient/,
-or https://healthnextdoor.herokuapp.com/findVolunteer/
 
 Also, for the above three function, we also keep a functionality called "getXXXByName", we would like to use this
 function to return a list of people with the same/similar names with their self-introduction, and when you click
@@ -36,13 +15,6 @@ it will return the overview information of Jennifer Robbins;
 and try the url: https://healthnextdoor.herokuapp.com/findNurse/Jennifer_Robbins/10001, to test the getNurseByID,
 it will return all of the information about Jennifer Robbins.
 
-For the function of Knowledge, we design this function to provide some knowledge for our users to give them
-deeper insight about Dementia and teach them some caring skills, which can be different forms,
-like video, paper, tutorial session, questionnaire, etc.
-These can be post by using "addKnowledge", update by using "updateKnowledge", and delete by using "deleteKnowledge".
-Our users can use "getAllKnowledge" to see all of resources, and use "getKnowledgeByName" to search what they want.
-This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/Knowledge/
-
 For the function of login, we design this function to let the user log in and give access to user homepage in front end
 to modify post and password.
 These can be login by using "login".
@@ -52,3 +24,26 @@ For the function of signup, we design this function to let the user sign up and 
 can make a post as soon as they have an account.
 These can be post by using "signup".
 This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/signup/
+
+For the function of updateUser, we design this function to let the patient connect with caregiver by adding their user
+name to the sendReq/orderList/receiveReq/historyList. Rating and comment is for patient to giving feedback to the
+caregiver. Also, reset password is in that function.
+This could be achieve by accessing the url: https://healthnextdoor.herokuapp.com/user/:usernameofuser
+For send request, post {action: ["send", "{username of caregiver you want}"]}
+https://healthnextdoor.herokuapp.com/user/zqw
+e.g. {action: ["send", "www"]}
+For accept request, post {action: ["accept", "{username of patient}"]}
+https://healthnextdoor.herokuapp.com/user/www
+e.g. {action: ["accept", "zqw"]}
+For decline request, post {action: ["decline", "{username of patient}"]}
+https://healthnextdoor.herokuapp.com/user/www
+e.g. {action: ["decline", "zqw"]}
+For complete request, post {action: ["complete", "{username of patient}"]}
+https://healthnextdoor.herokuapp.com/user/www
+e.g. {action: ["complete", "zqw"]}
+For rating and review, post {action: ["rate", "{username of patient}", "rating_star","comment"]}
+https://healthnextdoor.herokuapp.com/user/www
+e.g. {action: ["rate", "zqw", "4", "very good"]}
+For reset Password, post{password: "your password"}
+https://healthnextdoor.herokuapp.com/user/www
+e.g. {password: "1234"}
