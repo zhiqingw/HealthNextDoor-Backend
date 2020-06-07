@@ -1,11 +1,10 @@
 require('dotenv').config()
-
 const mongoose = require("mongoose");
 
 // Connect to MongoDB
-//CONNECTION_STRING = "mongodb+srv://<username>:<password>@cluster0-nxqvq.mongodb.net/test?retryWrites=true&w=majority";
-MONGO_URL = "mongodb+srv://ElliotXue:aaa@cluster0-nxqvq.mongodb.net/test?retryWrites=true&w=majority";
-MONGO_URL.replace("aaa", process.env.MONGO_URL)
+
+CONNECTION_STRING = "mongodb+srv://ElliotXue:<password>@cluster0-nxqvq.mongodb.net/test?retryWrites=true&w=majority";
+MONGO_URL = CONNECTION_STRING.replace("<password>",process.env.MONGO_PASSWORD);
 console.log(MONGO_URL);
 
 
